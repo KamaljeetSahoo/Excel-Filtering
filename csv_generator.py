@@ -34,5 +34,5 @@ for i in range(len(outlet_names)):
                 }
             final.append(d, ignore_index=True)
 
-print(final.head())
+final.to_csv('out.csv')
     

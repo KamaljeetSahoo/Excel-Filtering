@@ -32,7 +32,7 @@ for i in range(len(outlet_names)):
                 'Total Tax Amount':sgst_data['Total Tax Amount'].sum(),
                 'Net Amount':sgst_data['Net Amount'].sum()
                 }
-            final.append(d, ignore_index=True)
+            final = final.append(d, ignore_index=True)
 
 final.to_csv('out.csv')
     

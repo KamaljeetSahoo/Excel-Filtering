@@ -1,11 +1,12 @@
 import pandas as pd
 
-df = pd.read_csv('data.csv')
+df = pd.read_excel('SALE B2B OCTOBER 2018.xlsx')
 
 df.dropna(axis=0, inplace=True)
 df.reset_index(drop=True, inplace=True)
 
 outlet_names = list(df['Outlet Name'].unique())
+print(df.dtypes)
 
 final = pd.DataFrame(columns=['Outlet Name', 'Outlet GSTIN Code', 'Invoice No', 'Invoice Date', 'Taxable Line Amt', 'SGST_Tax_Rate', 'SGST_Tax_Value', 'CGST_Tax_Rate', 'Cess_Tax_Rate', 'Total Tax Amount', 'Net Amount'])
 print(final)
@@ -34,5 +35,6 @@ for i in range(len(outlet_names)):
                 }
             final = final.append(d, ignore_index=True)
 
+
+final['Invoice Date'] = pd.to_datetime(df['Invoice Date'])
 final.to_csv('out.csv')
-    
